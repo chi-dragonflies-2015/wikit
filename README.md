@@ -1,3 +1,4 @@
+[![Coverage Status](https://coveralls.io/repos/chi-dragonflies-2015/wikit/badge.svg?branch=master&service=github)](https://coveralls.io/github/chi-dragonflies-2015/wikit?branch=master)
 # wikit
 
 ##Brief: A Wiki
