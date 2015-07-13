@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :destroy]
-ef index
+
+  def index
     @articles = Article.all
   end
 
@@ -24,7 +25,7 @@ ef index
 
   def destroy
     @article.destroy
-    redirect_to games_url, notice: 'Article was successfully destroyed.'
+    redirect_to articles_url, notice: 'Article was successfully destroyed.'
   end
 
   private
