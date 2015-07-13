@@ -5,3 +5,5 @@ rvm:
 deploy:
   provider: heroku
   api_key: "67c55e38-aa41-408c-8ec5-7d4905ace28e"
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
