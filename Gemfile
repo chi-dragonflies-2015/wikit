@@ -54,7 +54,6 @@ group :development, :test do
   gem "database_cleaner"
 
   gem 'capybara'
-
 end
 
 gem 'simplecov', :require => false, :group => :test
