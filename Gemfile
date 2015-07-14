@@ -57,3 +57,5 @@ gem 'coveralls', require: false
 gem 'ckeditor_rails'
 
 gem 'rails_12factor', group: :production
+gem 'paper_trail', '~> 4.0.0.rc'
+
