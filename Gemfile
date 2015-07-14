@@ -53,3 +53,5 @@ end
 gem 'simplecov', :require => false, :group => :test
 
 gem 'coveralls', require: false
+
+gem 'ckeditor_rails'
