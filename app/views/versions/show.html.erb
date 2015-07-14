@@ -1,0 +1,6 @@
+<% provide(:title, @article.title) %>
+<% content_for :contents do %>
+   <%= @article.contents.html_safe %>
+<% end %>
+<h1><%= @article.title %></h1>
+<%= yield :contents %>
