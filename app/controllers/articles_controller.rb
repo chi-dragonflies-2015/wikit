@@ -1,11 +1,15 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :destroy]
+  before_action :set_article, only: [:show, :destroy, :edit, :update]
 
   def index
     @articles = Article.all
   end
 
   def show
+
+  end
+
+  def edit
 
   end
 
@@ -20,6 +24,14 @@ class ArticlesController < ApplicationController
       redirect_to @article, notice: 'Article was successfully created.'
     else
       render :new
+    end
+  end
+
+  def update
+    if @article.update_attributes(article_params)
+      redirect_to @article, notice: 'Article was successfully updated.'
+    else
+      render :edit
     end
   end
 
