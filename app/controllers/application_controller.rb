@@ -1,11 +1,8 @@
 class ApplicationController < ActionController::Base
-
-  class ApplicationController
     def user_for_paper_trail
-      logged_in? ? current_member.id : 'Guest'
-    end
-  end
 
+      member_signed_in? ? "<a href='#{member_path(current_member)}'>#{current_member.email}</a>" : 'Guest'
+    end
 
   protect_from_forgery with: :exception
 end
