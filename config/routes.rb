@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'static_pages#index'
-  resources :articles
+  resources :articles do
+    resources :versions, only: [:index, :show]
+  end
+
   devise_for :members
   resources :members, only: [:index, :show]
 

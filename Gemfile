@@ -63,6 +63,7 @@ gem 'coveralls', require: false
 gem 'ckeditor_rails'
 
 gem 'rails_12factor', group: :production
+gem 'paper_trail', '~> 4.0.0.rc'
 
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'

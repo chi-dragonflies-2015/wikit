@@ -3,5 +3,8 @@ class Article < ActiveRecord::Base
 
   validates :contents, presence: true
   validates :author, presence:true
+  
+  
+  has_paper_trail
 
 end
