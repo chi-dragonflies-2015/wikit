@@ -26,7 +26,14 @@ let!(:article) { create(:article) }
     end
   end
 
-  describe "POST create" do
+  describe "Get #edit" do
+    it "assigns the requested article as @article" do
+      get :edit, { id: article.to_param}
+      expect(assigns(:article)).to eq(article)
+    end
+  end
+
+  describe "POST #create" do
 
     context "when valid params are passed" do
 
@@ -60,6 +67,43 @@ let!(:article) { create(:article) }
       it "re-renders the 'new' template" do
         post :create, article: { title: article.title, contents: article.contents, author: nil }
         expect(response).to render_template(:new)
+      end
+    end
+  end
+  describe "PUT update" do
+
+    context "when valid params are passed" do
+
+      it "edits the current article" do
+        allow(request.env['warden']).to receive(:authenticate!) { article.author }
+        allow(controller).to receive(:current_member) { article.author }
+        expect { put :update, id: article.id, article: { title: article.title, contents: article.contents, author: article.author} }.to change{ Article.all.count }.by(0)
+      end
+
+      it "assigns a newly edited article as @article" do
+        allow(request.env['warden']).to receive(:authenticate!) { article.author }
+        allow(controller).to receive(:current_member) { article.author }
+        put :update, id: article.id, article: { title: article.title, contents: article.contents, author: article.author }
+        expect(assigns(:article)).to eq(Article.last)
+      end
+
+      it "redirects to the created article" do
+        allow(request.env['warden']).to receive(:authenticate!) { article.author }
+        allow(controller).to receive(:current_member) { article.author }
+        put :update, id: article.id, article: { title: article.title, contents: article.contents, author: article.author }
+        expect(response).to redirect_to action: :show, id: assigns(:article).id
+      end
+    end
+
+    context "when invalid params are passed" do
+      it "assigns the accessed article as @article" do
+        put :update, id: article.id, article: { title: article.title, contents: article.contents, author: nil }
+        expect(assigns(:article).id).to eq article.id
+      end
+
+      it "re-renders the 'edit' template" do
+        put :update, id: article.id, article: { title: article.title, contents: nil, author: nil }
+        expect(response).to render_template(:edit)
       end
     end
   end
