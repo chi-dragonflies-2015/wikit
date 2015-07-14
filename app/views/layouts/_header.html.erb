@@ -3,6 +3,8 @@
     <%= link_to "Wikit", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Article Index", articles_path %></li>
+        <li><%= link_to "Create Article", new_article_path %></li>
         <li><%= link_to "Home",   root_path %></li>
         <% if member_signed_in? %>
           <li><%= link_to "Members", members_path %></li>
