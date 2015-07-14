@@ -9,4 +9,5 @@ feature "User visits the website" do
     Article.create()
     visit '/index'
     expect(page).to have_content("")
+  end
 end
