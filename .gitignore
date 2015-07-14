@@ -12,3 +12,7 @@
 !/log/.keep
 /tmp
 coverage
+
+# Ignore local variables
+.env
+Procfile
