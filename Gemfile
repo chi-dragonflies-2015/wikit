@@ -55,3 +55,5 @@ gem 'simplecov', :require => false, :group => :test
 gem 'coveralls', require: false
 
 gem 'ckeditor_rails'
+
+gem 'rails_12factor', group: :production
