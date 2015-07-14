@@ -57,4 +57,3 @@ gem 'coveralls', require: false
 gem 'ckeditor_rails'
 
 gem 'rails_12factor', group: :production
-gem 'non-stupid-digest-assets'
