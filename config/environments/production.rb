@@ -15,7 +15,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   # Default production host for mailer
-  config.action_mailer.default_url_options = { :host => 'wikit.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'wikit.herokuapp.com' }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
