@@ -1,6 +1,8 @@
 <h3><%= @article.title %>: Revision History</h3>
 <ul>
-  <% @versions.each do |thing| %>
-    <li><a href="#">view</a> <%= thing.created_at %> by: <%= thing.whodunnit %></li>
+  <% @versions.each do |revision| %>
+    <% if revision.object %>
+      <li><a href="/articles/<%= @article.id %>/versions/<%= revision.id %>">view</a> <%= revision.created_at %> by: <%= revision.whodunnit %></li>
+    <% end %>
   <% end %>
 </ul>
