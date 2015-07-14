@@ -1,5 +1,6 @@
-<form>
-  <label>Title</label>
-  <input type="text" name="article[:title]">
-  <%= render 'texteditor' %>
-</form>
+<%= form_for @article do |form| -%>
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+  <%= form.text_area :contents, :value => 'Write Article Here', :id => 'text-editor', :class => 'ckeditor' %>
+  <%= form.submit %>
+<% end -%>
