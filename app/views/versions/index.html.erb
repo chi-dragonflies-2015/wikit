@@ -2,7 +2,7 @@
 <ul>
   <% @versions.each do |revision| %>
     <% if revision.object %>
-      <li><a href="/articles/<%= @article.id %>/versions/<%= revision.id %>">view</a> <%= revision.created_at %> by: <%= revision.whodunnit %></li>
+      <li><a href="/articles/<%= @article.id %>/versions/<%= revision.id %>">view</a> <%= revision.created_at %> by: <%= revision.whodunnit ? revision.whodunnit.html_safe : 'A ghost' %></li>
     <% end %>
   <% end %>
 </ul>
