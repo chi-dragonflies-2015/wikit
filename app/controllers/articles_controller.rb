@@ -15,7 +15,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
+    puts "************"
+    puts article_params
+    puts "************"
+    @article.author = current_member
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
     else
