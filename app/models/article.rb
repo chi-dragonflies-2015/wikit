@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
   belongs_to :author, class_name: "Member"
-
+  has_many :tags
   validates :contents, presence: true
   validates :author, presence:true
   

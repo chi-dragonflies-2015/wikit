@@ -7,12 +7,11 @@
 <br>
 <div class="tag-holder">
   <h5>Tags:</h5>
-    <ul class="list-unstyled list-inline">
-      <% @article.tags.each do |tag| %>
-        <li><%= tag.name %></li>
-      <% end %>
+    <ul class="list-unstyled list-inline" id="tag-list">
+      <%= render @article.tags  %>
     </ul>
-  <p><% link_to "add tag", action: new_article_tag(@article), remote: true %></p>
+  <p id="new-tag"><%= link_to "add tag",new_article_tag_path(@article), remote: true %></p>
+  <div id="tag-form" style="display:none;"></div>
 </div>
 <h1><%= @article.title %></h1>
   <%= yield :contents %>

@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
 
+  before_action :set_article, only: [:new, :create, :index]
+
   def new
     @tag = Tag.new
     respond_to do |format|
@@ -8,8 +10,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    @article = Article.find_by(id: params[:article_id])
-    @tag = @article.tags.create(params[:tag])
+    @tag = @article.tags.create(tag_params)
 
     if @tag.save
       respond_to do |format|
@@ -23,11 +24,14 @@ class TagsController < ApplicationController
 
 
   def index
-    @article = Article.find_by(id: params[:article_id])
     @tags = @article.tags
   end
 
   private
+
+  def set_article
+    @article = Article.find_by(id: params[:article_id])
+  end
 
   def tag_params
     params.require(:tag).permit(:name)
