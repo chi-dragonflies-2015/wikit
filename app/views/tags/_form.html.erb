@@ -1,0 +1,4 @@
+<%= form_for [@article,@tag], html: {:class => "form-inline", :id => "tag-form-element"}, remote: true do |form| %>
+  <%= form.text_field :name %>
+  <%= form.submit %>
+<% end %>
