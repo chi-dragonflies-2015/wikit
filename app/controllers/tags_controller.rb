@@ -5,11 +5,13 @@ class TagsController < ApplicationController
   def new
     @tag = Tag.new
     respond_to do |format|
+      format.html
       format.js
     end
   end
 
   def create
+    # Need to add authT
     @tag = @article.tags.create(tag_params)
 
     if @tag.save
