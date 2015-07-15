@@ -42,4 +42,29 @@ describe Article do
       expect(article.errors[:author]).to_not be_empty
     end
   end
+
+
+  describe 'class methods' do 
+    describe '::content_search' do
+
+      before do
+        Article.create!(title: "hello", contents:"blue", author: create(:member))
+        Article.create!(title: "hello", contents:"blue blue green", author: create(:member)) 
+        Article.create!(title: "hello", contents:"red green", author: create(:member)) 
+      end
+
+      it "includes only articles with the correct keyword" do
+        expect(Article.content_search("blue").length).to eq(2)
+      end
+
+      it "orders them by occurance" do
+        expect(Article.content_search("blue").first.contents).to eq("blue blue green")
+      end
+
+    end
+  end
+
+
+
+
 end

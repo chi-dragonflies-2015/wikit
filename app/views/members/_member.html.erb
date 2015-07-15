@@ -1,5 +1,4 @@
 <li>
   <%= link_to member.email, member %>
-    | <%= link_to "delete", member, method: :delete,
-                                  data: { confirm: "You sure?" } %>
+    <% if member_signed_in? && current_member.admin? %>| <%= link_to "delete", destroy_member_path(member), :method => :delete, :confirm => "You sure?" %><% end %>
 </li>

@@ -1,8 +1,10 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :destroy, :edit, :update]
+  before_action :authenticate_member!, :except => [:show, :index]
+  before_action :admin_member, only: :destroy
 
   def index
-    @articles = Article.all
+    @articles = params[:search] ? Article.content_search(params[:search]) : Article.all
   end
 
   def show
