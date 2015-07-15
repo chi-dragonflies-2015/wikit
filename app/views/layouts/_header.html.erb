@@ -17,6 +17,8 @@
             </div>
           </form>        
         </li>
+        <li><%= link_to "Article Index", articles_path %></li>
+        <li><%= link_to "Create Article", new_article_path %></li>
         <% if member_signed_in? %>
           <li><%= link_to "Members", members_path %></li>
           <li class="dropdown">
