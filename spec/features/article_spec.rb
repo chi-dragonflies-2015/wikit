@@ -20,7 +20,7 @@ end
 feature "Admins can feature or un-feature articles" do
   before(:each) do
     admin = FactoryGirl.create(:member)
-    admin = admin.
+    admin.update_attributes(admin: true)
     login_as(admin , :scope => :member)
   end
 
@@ -37,10 +37,23 @@ feature "Admins can feature or un-feature articles" do
 end
 
 feature "Article state" do
+  before(:each) do
+    admin = FactoryGirl.create(:member)
+    admin.update_attributes(admin: true)
+    login_as(admin , :scope => :member)
+  end
+
   scenario "is displayed for a given article" do
     article = FactoryGirl.create(:article)
     visit "/articles/#{article.id}"
     expect(page).to have_content(article.state)
+  end
+  scenario "can be edited by an admin" do
+    article = FactoryGirl.create(:article)
+    visit "articles/#{article.id}/edit"
+    page.choose('article_state_unpublished')
+    page.choose('article_state_published')
+    page.choose('article_state_needs_sources')
   end
 end
 
