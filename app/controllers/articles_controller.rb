@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :destroy, :edit, :update]
 
   def index
-    @articles = params[:search_keyword] ? Article.content_search(params[:search_keyword]) : Article.all
+    @articles = params[:search] ? Article.content_search(params[:search]) : Article.all
   end
 
   def show
