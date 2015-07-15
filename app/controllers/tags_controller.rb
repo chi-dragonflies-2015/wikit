@@ -1,6 +1,8 @@
 class TagsController < ApplicationController
 
   before_action :set_article, only: [:new, :create, :index, :destroy]
+  before_action :authenticate_member!, only: [:create, :destroy]
+
 
   def new
     @tag = Tag.new
@@ -11,7 +13,6 @@ class TagsController < ApplicationController
   end
 
   def create
-    authenticate_member!
     @tag = @article.tags.create(tag_params)
 
     if @tag.save

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'articles/bytag/:tag_name' => 'articles#bytag', as: :articles_by_tag
   resources :articles do
     resources :versions, only: [:index, :show]
-    resources :tags, only: [:create, :index, :new]
+    resources :tags, only: [:create, :index, :new, :destroy]
   end
 
   devise_for :members
