@@ -5,6 +5,11 @@ class ArticlesController < ApplicationController
     @articles = params[:search] ? Article.content_search(params[:search]) : Article.all
   end
 
+  def bytag
+    @articles = Article.tag_search(params[:tag_name])
+    render 'index'
+  end
+
   def show
 
   end

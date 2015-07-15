@@ -12,6 +12,11 @@ class Article < ActiveRecord::Base
     Hash[list.select{ |_,value| value > 0 }.sort_by{ |_,value| value }].keys.reverse
   end
 
+  def self.tag_search(keyword)
+    list = []
+    Article.all.each { |article| list << article if article.tags.map(&:name).include?(keyword)}
+    list
+  end
 
 
   has_paper_trail
