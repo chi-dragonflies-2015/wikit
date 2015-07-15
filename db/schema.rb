@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20150714231929) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "featured",   default: false
+    t.string   "state",      default: "unpublished"
   end
 
   create_table "members", force: :cascade do |t|
