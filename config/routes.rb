@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'static_pages#index'
+  get 'articles/bytag/:tag_name' => 'articles#bytag', as: :articles_by_tag
   resources :articles do
     resources :versions, only: [:index, :show]
+    resources :tags, only: [:create, :index, :new]
   end
 
   devise_for :members

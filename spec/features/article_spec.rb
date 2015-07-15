@@ -69,6 +69,18 @@ feature "search capability!" do
   end
 end
 
+feature "User searches for Articles of a certain tag" do
+  scenario "user clicks tag link" do
+    art = Article.create(title: "Example Title Green", contents: "a fish called wanda", author: build(:author) )
+    art2 = Article.create(title: "Example Title Blue", contents: "a fish called wanda", author: build(:author) )
+    art.tags.create(name:"history")
+    visit "/articles/#{art.id}"
+    click_link('history')
+    expect(page).to have_content("Green")
+    expect(page).to_not have_content("Blue")
+  end
+end
+
 feature "delete buttons!" do
   scenario "when user visits the article index as a member" do
     article = Article.create(title: "Example Title Green", contents: "a fish called wanda", author: build(:author) )
