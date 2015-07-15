@@ -4,5 +4,11 @@
   <br>
   <br>
   <%= form.text_area :contents, :value => @article.contents, :id => 'text-editor', :class => 'ckeditor' %>
+  <br>
+  <br>
+  <%= form.label "Feature Article" %>
+  <%= form.check_box :featured %>
+  <br>
+  <br>
   <%= form.submit %>
 <% end -%>
