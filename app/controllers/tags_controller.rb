@@ -2,6 +2,9 @@ class TagsController < ApplicationController
 
   def new
     @tag = Tag.new
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
