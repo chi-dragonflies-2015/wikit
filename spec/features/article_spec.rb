@@ -33,6 +33,8 @@ feature "Admins can feature or un-feature articles" do
     featured_article = Article.create(title: "Sample title", contents: "Sample contents", author: Member.create(email: "test@test.com", password: "password"), featured: true)
     visit "/articles/#{featured_article.id}/edit"
     page.check('article_featured')
+  end
+end
 
 feature "search capability!" do
   scenario "when user searches for something" do
@@ -44,8 +46,6 @@ feature "search capability!" do
     expect(page).to have_content("Green")
     expect(page).to_not have_content("Purple")
   end
-
-  # Maybe write one to show that they are in the proper order?
 end
 
 feature "delete buttons!" do
