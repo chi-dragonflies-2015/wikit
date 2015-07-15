@@ -8,11 +8,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def correct_member
-      @member = Member.find(params[:id])
-      redirect back unless current_member?(@member)
-    end
-
     def admin_member
       redirect back unless current_member.admin?
     end
