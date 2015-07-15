@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   resources :articles do
     resources :versions, only: [:index, :show]
-    resources :versions, only: [:create, :index]
+    resources :tags, only: [:create, :index, :new]
   end
 
   devise_for :members

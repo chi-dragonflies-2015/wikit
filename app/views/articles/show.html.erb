@@ -5,11 +5,14 @@
 <%= link_to "Edit", edit_article_path(@article) %>
 <%= link_to "Versions", article_versions_path(@article) %>
 <br>
-<h5>Tags:</h5>
-<ul class="list-unstyled list-inline">
-  <% @article.tags.each do |tag| %>
-    <li><%= tag.name %></li>
-  <% end %>
-</ul>
+<div class="tag-holder">
+  <h5>Tags:</h5>
+    <ul class="list-unstyled list-inline">
+      <% @article.tags.each do |tag| %>
+        <li><%= tag.name %></li>
+      <% end %>
+    </ul>
+  <p><% link_to "add tag", action: new_article_tag(@article), remote: true %></p>
+</div>
 <h1><%= @article.title %></h1>
-<%= yield :contents %>
+  <%= yield :contents %>
