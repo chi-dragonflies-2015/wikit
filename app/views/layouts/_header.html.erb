@@ -4,11 +4,18 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= form_tag("/search", method: "get") do %>
-            <%= label_tag(:q, "Search for:") %>
-            <%= text_field_tag(:q) %>
-            <%= submit_tag("Search") %>
-          <% end %>
+          <form class="navbar-form" role="search" action="/articles" method="get">
+            <div class="input-group">
+              <input type="text" name="search" class="form-control pull-right" style="width: 250px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5;" placeholder="Search">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">
+                  <span class="glyphicon glyphicon-search">
+                    <span class="sr-only">Search</span>
+                  </span>
+                </button>
+              </span>
+            </div>
+          </form>        
         </li>
         <% if member_signed_in? %>
           <li><%= link_to "Members", members_path %></li>
