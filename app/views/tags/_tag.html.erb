@@ -1,4 +1,4 @@
-<li><%= link_to tag.name, articles_by_tag_path(tag.name) %><%= link_to [tag.article,tag], remote: true, method: :delete do %>
+<li><%= link_to tag.name, articles_by_tag_path(tag.name) %><%= link_to [tag.article,tag], remote: true, method: :delete, class: "delete-tag" do %>
   <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 <% end %>
 </li>

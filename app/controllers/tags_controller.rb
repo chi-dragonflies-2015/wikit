@@ -34,6 +34,10 @@ class TagsController < ApplicationController
     @tag = Tag.find_by(id: params[:id])
     @tag.destroy
     @tags = @article.tags
+    respond_to do |format|
+      format.html {redirect_to @article}
+      format.js
+    end
   end
 
   private
