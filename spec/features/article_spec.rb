@@ -36,6 +36,14 @@ feature "Admins can feature or un-feature articles" do
   end
 end
 
+feature "Article state" do
+  scenario "is displayed for a given article" do
+    article = FactoryGirl.create(:article)
+    visit "/articles/#{article.id}"
+    expect(page).to have_content(article.state)
+  end
+end
+
 feature "search capability!" do
   scenario "when user searches for something" do
     Article.create(title: "Example Title Green", contents: "a fish called wanda", author: build(:author) )

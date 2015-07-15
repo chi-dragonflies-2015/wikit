@@ -2,6 +2,7 @@
 <% content_for :contents do %>
    <%= @article.contents.html_safe %>
 <% end %>
+<%= @article.state %>
 <%= link_to "Edit", edit_article_path(@article) %>
 <%= link_to "Versions", article_versions_path(@article) %>
 <% if member_signed_in? && current_member.admin? %><%= link_to "delete", article_path(@article), :method => :delete, :confirm => "You sure?" %><% end %>
