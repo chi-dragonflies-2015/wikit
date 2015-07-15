@@ -1,0 +1,8 @@
+<h3><%= article.title %>: Revision History</h3>
+<ul>
+  <% article.versions.each do |revision| %>
+    <% if revision.object %>
+      <li><a href="/articles/<%= article.id %>/versions/<%= revision.id %>">view</a> <%= revision.created_at %> by: <%= revision.whodunnit ? revision.whodunnit.html_safe : 'A ghost' %></li>
+    <% end %>
+  <% end %>
+</ul>
