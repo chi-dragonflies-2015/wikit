@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_action :admin_member, only: :destroy
 
   def index
-    @articles = params[:search] ? Article.content_search(params[:search]) : Article.where(state: ["published", "needs sources"])
+    @articles = params[:search] ? Article.content_search(params[:search]) : Article.all
   end
 
   def bytag

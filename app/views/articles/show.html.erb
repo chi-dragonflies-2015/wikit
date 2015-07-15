@@ -13,7 +13,9 @@
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#article" aria-controls="article" role="tab" data-toggle="tab">Article</a></li>
     <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+    <% if member_signed_in? %>
     <li role="presentation"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit</a></li>
+    <% end %>
     <% if member_signed_in? && current_member.admin? %>
       <li role="presentation"><%= link_to "delete", article_path(@article), :method => :delete, :confirm => "You sure?" %></li>
     <% end %>
