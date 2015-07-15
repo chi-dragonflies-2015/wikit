@@ -13,5 +13,6 @@
   <p id="new-tag"><%= link_to "add tag",new_article_tag_path(@article), remote: true %></p>
   <div id="tag-form" style="display:none;"></div>
 </div>
+<% if member_signed_in? && current_member.admin? %><%= link_to "delete", article_path(@article), :method => :delete, :confirm => "You sure?" %><% end %>
 <h1><%= @article.title %></h1>
   <%= yield :contents %>
