@@ -10,5 +10,13 @@
   <%= form.check_box :featured %>
   <br>
   <br>
+  <%= form.radio_button(:state, "unpublished") %>
+  <%= form.label(:state, "Don't Publish") %>
+  <%= form.radio_button(:state, "published") %>
+  <%= form.label(:state, "Publish") %>
+  <%= form.radio_button(:state, "needs_sources") %>
+  <%= form.label(:state, "needs sources") %>
+  <br>
+  <br>
   <%= form.submit %>
 <% end -%>
