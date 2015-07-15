@@ -6,17 +6,19 @@
   <%= form.text_area :contents, :value => @article.contents, :id => 'text-editor', :class => 'ckeditor' %>
   <br>
   <br>
-  <%= form.label "Feature Article" %>
-  <%= form.check_box :featured %>
-  <br>
-  <br>
-  <%= form.radio_button(:state, "unpublished") %>
-  <%= form.label(:state, "Don't Publish") %>
-  <%= form.radio_button(:state, "published") %>
-  <%= form.label(:state, "Publish") %>
-  <%= form.radio_button(:state, "needs_sources") %>
-  <%= form.label(:state, "needs sources") %>
-  <br>
-  <br>
+  <% if member_signed_in? && current_member.admin? %>
+    <%= form.label "Feature Article" %>
+    <%= form.check_box :featured %>
+    <br>
+    <br>
+    <%= form.radio_button(:state, "unpublished") %>
+    <%= form.label(:state, "Don't Publish") %>
+    <%= form.radio_button(:state, "published") %>
+    <%= form.label(:state, "Publish") %>
+    <%= form.radio_button(:state, "needs_sources") %>
+    <%= form.label(:state, "needs sources") %>
+    <br>
+    <br>
+  <% end %>
   <%= form.submit %>
 <% end -%>
