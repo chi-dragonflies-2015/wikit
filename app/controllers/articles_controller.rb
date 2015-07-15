@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :admin_member, only: :destroy
 
   def index
-    @articles = Article.all
+    @articles = params[:search] ? Article.content_search(params[:search]) : Article.all
   end
 
   def show
