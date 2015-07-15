@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
 
-  before_action :set_article, only: [:new, :create, :index]
+  before_action :set_article, only: [:new, :create, :index, :destroy]
 
   def new
     @tag = Tag.new
@@ -26,6 +26,12 @@ class TagsController < ApplicationController
 
 
   def index
+    @tags = @article.tags
+  end
+
+  def destroy
+    @tag = Tag.find_by(id: params[:id])
+    @tag.destroy
     @tags = @article.tags
   end
 
