@@ -22,5 +22,17 @@ feature 'Should see tags' do
     expect(page).to have_content("Jack")
   end
 
+  scenario 'User can delete a tag on the Article show page' do
+    art = Article.create(title: "Example Title Purple", contents: "a fish called harold", author: build(:author))
+    art.tags.create(name: "hello")
+    art.tags.create(name: "goodbye")
+    member = FactoryGirl.create(:member)
+    login_as(member, :scope => :member)
+    visit "/articles/#{art.id}"
+    first('.delete-tag').click
+    expect(page).to_not have_content("hello")
+    expect(page).to have_content("goodbye")
+  end
+
 
 end
