@@ -11,8 +11,6 @@
       <li role="presentation"><%= link_to "delete", article_path(@article), :method => :delete, :confirm => "You sure?" %></li>
     <% end %>
   </ul>
-<%= link_to "Edit", edit_article_path(@article) %>
-<%= link_to "Versions", article_versions_path(@article) %>
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="article">
       <h1><%= @article.title %></h1>
