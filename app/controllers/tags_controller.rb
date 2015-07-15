@@ -11,7 +11,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    # Need to add authT
+    authenticate_member!
     @tag = @article.tags.create(tag_params)
 
     if @tag.save
