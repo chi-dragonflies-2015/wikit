@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
   end
 
   protect_from_forgery with: :exception
+
+  private
+
+    def admin_member
+      redirect back unless current_member.admin?
+    end
 end

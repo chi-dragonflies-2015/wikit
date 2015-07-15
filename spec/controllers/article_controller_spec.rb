@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe ArticlesController do
-let!(:author) { create(:member)}
-let!(:article) { create(:article) }
+  let!(:author) { create(:member)}
+  let!(:article) { create(:article) }
 
   describe "GET #index" do
     it "assigns all articles as @articles" do
@@ -20,13 +20,15 @@ let!(:article) { create(:article) }
   end
 
   describe "GET #new" do
+    login_member
     it "assigns a new article" do
       get :new
-      expect(assigns(:article).id).to eq nil
+      expect(assigns(:article)).to be_a_new(Article)
     end
   end
 
   describe "Get #edit" do
+    login_member
     it "assigns the requested article as @article" do
       get :edit, { id: article.to_param}
       expect(assigns(:article)).to eq(article)
@@ -34,7 +36,7 @@ let!(:article) { create(:article) }
   end
 
   describe "POST #create" do
-
+    login_member
     context "when valid params are passed" do
 
       it "creates a new Article" do
@@ -60,18 +62,18 @@ let!(:article) { create(:article) }
 
     context "when invalid params are passed" do
       it "assigns a newly created but unsaved article as @article" do
-        post :create, article: { title: article.title, contents: article.contents, author: nil }
-        expect(assigns(:article).id).to eq nil
+        post :create, article: { title: article.title, contents: nil, author: nil }
+        expect(assigns(:article)).to be_a_new(Article)
       end
 
       it "re-renders the 'new' template" do
-        post :create, article: { title: article.title, contents: article.contents, author: nil }
+        post :create, article: { title: article.title, contents: nil, author: nil }
         expect(response).to render_template(:new)
       end
     end
   end
   describe "PUT update" do
-
+    login_member
     context "when valid params are passed" do
 
       it "edits the current article" do
@@ -109,6 +111,7 @@ let!(:article) { create(:article) }
   end
 
   describe "DELETE #destroy" do
+    login_admin
     it "assigns the requested article as @article" do
       delete :destroy, { id: article.to_param }
       expect(assigns(:article)).to eq(article)
