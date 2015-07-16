@@ -2,7 +2,8 @@ class Article < ActiveRecord::Base
   belongs_to :author, class_name: "Member"
   has_many :tags
   validates :contents, presence: true
-  validates :author, presence:true
+
+  validates :author, presence:true, on: :create
   scope :public_viewable, -> { where(state: ["published", "needs sources"]) }
 
   # Returns an array of arrays, with the inner arrays as
