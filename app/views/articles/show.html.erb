@@ -10,7 +10,7 @@
     </ul>
   <p id="new-tag"><%= link_to "add tag",new_article_tag_path(@article), remote: true %></p>
   <div id="tag-form" style="display:none;"></div>
-<ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#article" aria-controls="article" role="tab" data-toggle="tab">Article</a></li>
     <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
     <% if member_signed_in? %>
@@ -22,6 +22,7 @@
   </ul>
   <hr>
 </div>
+<div class="container">
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="article">
       <h1><%= @article.title %></h1>
@@ -35,8 +36,4 @@
       <%= render file: "articles/edit", locals: {article: @article}, layout: false %>
    </div>
   </div>
-
 </div>
-
-
-
