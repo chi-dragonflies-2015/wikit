@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :destroy, :edit, :update]
-  before_action :authenticate_member!, :except => [:show, :index, :bytag]
+  before_action :member_signed_in?, only: :update
+  before_action :authenticate_member!, :except => [:show, :index, :update, :bytag]
   before_action :admin_member, only: :destroy
 
   def index

@@ -2,10 +2,7 @@
 <% content_for :contents do %>
    <%= @article.contents.html_safe %>
 <% end %>
-<%= @article.state %>
-<%= link_to "Edit", edit_article_path(@article) %>
-<%= link_to "Versions", article_versions_path(@article) %>
-<br>
+<h5> This page has the status <%= @article.state %>
 <div class="tag-holder">
   <h5>Tags:</h5>
     <ul class="list-unstyled list-inline" id="tag-list">
@@ -13,7 +10,33 @@
     </ul>
   <p id="new-tag"><%= link_to "add tag",new_article_tag_path(@article), remote: true %></p>
   <div id="tag-form" style="display:none;"></div>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#article" aria-controls="article" role="tab" data-toggle="tab">Article</a></li>
+    <li role="presentation"><a href="#history" aria-controls="history" role="tab" data-toggle="tab">History</a></li>
+    <% if member_signed_in? %>
+    <li role="presentation"><a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">Edit</a></li>
+    <% end %>
+    <% if member_signed_in? && current_member.admin? %>
+      <li role="presentation"><%= link_to "delete", article_path(@article), :method => :delete, :confirm => "You sure?" %></li>
+    <% end %>
+  </ul>
+  <hr>
 </div>
-<% if member_signed_in? && current_member.admin? %><%= link_to "delete", article_path(@article), :method => :delete, :confirm => "You sure?" %><% end %>
-<h1><%= @article.title %></h1>
-  <%= yield :contents %>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="article">
+      <h1><%= @article.title %></h1>
+      <hr>
+      <%= yield :contents %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="history">
+      <%= render partial: "history", locals: {article: @article}, layout: false %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="edit">
+      <%= render file: "articles/edit", locals: {article: @article}, layout: false %>
+   </div>
+  </div>
+
+</div>
+
+
+

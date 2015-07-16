@@ -1,6 +1,11 @@
 <div class="container">
-  <h1>Articles</h1>
-  <ul class="list-unstyled">
-  <%= render @articles %>
-  </ul>
+<h1>Articles</h1>
+<ul class="list-unstyled">
+  <% if member_signed_in? %>
+    <%= render @articles %>
+  <% else %>
+    <%= render @articles.public_viewable %>
+  <% end %>
+</ul>
+
 </div>
