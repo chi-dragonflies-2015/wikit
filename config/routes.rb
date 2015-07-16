@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :members, only: [:index, :show]
   #match '/members/:id', :to => 'members#show',    :as => :member,         :via => :get
 match '/members/:id', :to => 'members#destroy', :as => :destroy_member, :via => :delete
-
+match '/members/:id', :to => 'members#promote', :as => :promote_member, :via => :patch
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

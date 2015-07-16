@@ -6,7 +6,7 @@ feature "User visits the website" do
     login_as(member, :scope => :member)
     visit '/members'
     expect(page).to have_content("All members")
-    expect(page.has_link?("delete")).to be false
+    expect(page.has_link?("Delete")).to be false
   end
 
   scenario "when user visits the index as an admin" do
@@ -17,6 +17,6 @@ feature "User visits the website" do
     login_as(member, :scope => :member)
     visit '/members'
     expect(page).to have_content("All members")
-    expect(page.has_link?("delete")).to be true
+    expect(page.has_link?("Delete")).to be true
   end
 end
